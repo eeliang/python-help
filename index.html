@@ -314,6 +314,46 @@
               </ul>
           </li>
           <li>
+            <a href="#concept-guide" class="toc-h1 toc-link" data-title="Concept guide">Concept guide</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#logging" class="toc-h2 toc-link" data-title="Logging">Logging</a>
+                  </li>
+                  <li>
+                    <a href="#libraries-modules-and-packages" class="toc-h2 toc-link" data-title="Libraries, modules, and packages">Libraries, modules, and packages</a>
+                  </li>
+                  <li>
+                    <a href="#reserved-words-in-python" class="toc-h2 toc-link" data-title="Reserved words in Python">Reserved words in Python</a>
+                  </li>
+                  <li>
+                    <a href="#operators" class="toc-h2 toc-link" data-title="Operators">Operators</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#datatypes-and-operators" class="toc-h1 toc-link" data-title="Datatypes and operators">Datatypes and operators</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#number" class="toc-h2 toc-link" data-title="Number">Number</a>
+                  </li>
+                  <li>
+                    <a href="#string" class="toc-h2 toc-link" data-title="String">String</a>
+                  </li>
+                  <li>
+                    <a href="#list" class="toc-h2 toc-link" data-title="List">List</a>
+                  </li>
+                  <li>
+                    <a href="#tuple" class="toc-h2 toc-link" data-title="Tuple">Tuple</a>
+                  </li>
+                  <li>
+                    <a href="#dictionary" class="toc-h2 toc-link" data-title="Dictionary">Dictionary</a>
+                  </li>
+                  <li>
+                    <a href="#set" class="toc-h2 toc-link" data-title="Set">Set</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#environment-management" class="toc-h1 toc-link" data-title="Environment management">Environment management</a>
               <ul class="toc-list-h2">
                   <li>
@@ -381,6 +421,386 @@
 <p>For a bite-size walkthrough of concepts, I recommended <a href="https://www.programiz.com/python-programming">programiz</a>.</p>
 
 <p>Lastly, do it yourself! As you are going through the documentation, open up a terminal or python IDE and write the code snippets. Nothing beats learning than trying it yourself.</p>
+<h1 id='concept-guide'>Concept guide</h1>
+<p>Here we will run through key concepts in python.</p>
+<h2 id='logging'>Logging</h2><div class="highlight"><pre class="highlight plaintext"><code>variable_1 = "hello"
+variable_2 = "my name is"
+
+print(variable_1 + " " + variable_2)   # prints "hello my name is"
+print(variable_1, variable_2)          # prints "hello my name is"
+
+variable_3 = variable_1 + " " + variable_2 + " piggy."
+
+print(variable_3)                      # prints "hello my name is piggy."
+</code></pre></div>
+<p>There are several ways to communicate between the backend and the &quot;frontend&quot;.</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>print()</td>
+<td>Prints the string or number unto the console.</td>
+</tr>
+<tr>
+<td>logger</td>
+<td>An built-in module that handles &quot;print&quot; outputs based on the environment.</td>
+</tr>
+<tr>
+<td>return</td>
+<td>Pass values between stacks. Use as a terminating statement for functions.</td>
+</tr>
+</tbody></table>
+<h2 id='libraries-modules-and-packages'>Libraries, modules, and packages</h2><div class="highlight"><pre class="highlight plaintext"><code>|----------------- distribution -----------------|
+|                                                |
+|               library / package                |
+|                       |                        |
+|           -------------------------            |
+|           |                       |            |
+|   | -------------- |      | -------------- |   |
+|   |     Module     |      |     Module     |   |
+|   | -------------- |      | -------------- |   |
+|   |     class      |      |     class      |   |
+|   |    function    |      |    function    |   |
+|   |    variable    |      |    variable    |   |
+|   | -------------- |      | -------------- |   |
+|________________________________________________|
+</code></pre></div>
+<p>The python ecosystem is made up of directories and sub-directories of python files (<code>.py</code>).</p>
+
+<p>Libraries/packages are collections of modules that can be <em>imported</em> into your python script. The python standard library is an extensive library that is prebuilt in most (if not all) python environments. For specialized disciplines, open-sourced libraries like <em>nunmpy</em> or <em>pandas</em> were created to offer useful functions like <code>.plot()</code>.</p>
+
+<p>The collection is <em>packaged</em> as a directory of files. Since it is hierarchcal, you can access <code>package.module</code> with object .method syntax</p>
+
+<p>Each module is a single python file. A collection of modules is known as a library. When libraries are large enough, they can be segmented into groups of libraries under a single package.</p>
+
+<p>Read this forum for <a href="https://www.quora.com/What-is-the-difference-between-Python-modules-packages-libraries-and-frameworks">clarification</a>.</p>
+<h3 id='modules'>Modules</h3>
+<p>Modules are files that contain code. They are task specfic and usually serve a single purpose (e.g. <code>import math</code>). Unlike libraries/packages which cater to a variety of user needs.</p>
+
+<p>They can be imported into your <strong>main</strong> python script. Subsequently, prebuilt functions and object methods will be available to use.</p>
+<h3 id='import'><code>import</code></h3><div class="highlight"><pre class="highlight plaintext"><code>import math
+math.factorial(4)
+
+from math import factorial
+factorial(4)
+
+import pandas as pd         # Alias namespace
+df = pd.Dataframe()
+</code></pre></div>
+<p>When you import the module, you are claiming the module filename as the namespace. Otherwise, you can use an alias to define a namespace for your module.</p>
+
+<p>You may also import and specific class / function / variable.</p>
+
+<p>It is recommended to use <code>import</code> statements with the module namespace intact. This allows other code-reviewer to discern when a function is called from a local file or from an external module.</p>
+<h3 id='distribution'>Distribution</h3>
+<p>Distributions are implementations of python that come prebuild with certain librarys. <strong>Anaconda</strong> is a python distribution for data anlytics that has the <code>matplotlib</code> and <code>numpy</code> packages attached, ready to be imported.</p>
+
+<p>The bare-bones <strong>CPython</strong> accessible from terminal is an implementation of python without &quot;extra&quot; libraries - only the python standard library.</p>
+
+<p>Find the current version of the python distribution <a href="https://www.python.org/">here</a>.</p>
+<h3 id='third-party-libraries'>Third party libraries</h3>
+<p>Third party libraries can be installed with <code>pip install &lt;&gt;</code>. Run this command in the <em>command line interface</em>.</p>
+<h2 id='reserved-words-in-python'>Reserved words in Python</h2><div class="highlight"><pre class="highlight plaintext"><code>True, False                     # These are boolean values
+None                            # no data
+from &lt;&gt; import &lt;&gt; as &lt;&gt;
+if: elif: else:                 # conditionals
+in                              # membership
+for                             # loops
+while
+with                            # Useful for parse files
+def: return                     # defining functions
+lambda                          # shorthand for functions. https://www.w3schools.com/python/python_lambda.asp
+and, or, not                    # logic operators
+is                              # identity operators
+global
+assert, break, del, except, finally, is
+try, except
+yield, raise
+</code></pre></div>
+<p>There are reserved words in python, which are pre-defined as built-in functions, type Conversion, and other control flow tools. These cannot be used as variable names.</p>
+<h2 id='operators'>Operators</h2>
+<p>Operators are based on <em>boolean</em> values. It takes two value at any one instance and computes a <code>True/False</code> output.</p>
+<h3 id='1-4-logic-comparison-relational-operators'>(1/4) Logic/Comparison/Relational operators</h3><div class="highlight"><pre class="highlight plaintext"><code>True or False                   # this is True
+not False                       # this is True
+
+x == y                          #
+x != y                          # x &gt; y                           # x &lt; y
+x &gt;= y
+x &lt;= y
+</code></pre></div>
+<p>These operators compares the relation between two values, in any one instance.</p>
+
+<p>When evaluating strings, remember that python evaluates iteratively based on the character set, starting at the first index. Also, note that comparisons are case sensitive - capital letters have a smaller ASCII value than lowercase letters.</p>
+
+<p>TODO: Concept of lazy evaluation. <code>and</code> vs <code>or</code> operator.</p>
+<h3 id='2-4-arithmetic-operators'>(2/4) Arithmetic operators</h3><div class="highlight"><pre class="highlight plaintext"><code>addition        = 1 + 2
+subtraction     = 15 - 2
+multiplication  = 15 * 2
+exponential     = 15 ** 2
+division        = 15 / 2
+division_round  = 15 // 2       # round down to integer value
+modulus         = 15 % 2        # remainder
+</code></pre></div>
+<p>Operators that are used to perform comparisions using mathematical notation. Arithmetic operation uses <code>==</code> as &quot;equals&quot;, <code>!=</code> as &quot;not-equals&quot;.</p>
+
+<p>Python performs the <code>modulus</code> operation different from other programming languages. See this image on the comparison between programming languages for modulus operation on negative numbers <a href="https://drive.google.com/file/d/1DhX5IWIKdhjtxqbWr4WQ68LRv_rgWenl/view?usp=sharing">here</a>.</p>
+
+<p>Arithmetic operators works for strings, list, and  tuples, but behave differently.</p>
+<h3 id='3-4-identity-operators'>(3/4) Identity operators</h3><div class="highlight"><pre class="highlight plaintext"><code>a = [1, 2, 3]
+b = a
+c = [1, 2, 3]
+
+print(a == c)                   # this is true, == compares the values
+print(a is c)                   # this is false
+print(a is b)                   # this is true, the variables are set to mirror the memory location.
+
+print(1 in a)                   # this is true
+</code></pre></div>
+<p>This is also based on <em>boolean</em> values. These operators describe the relation between two values, in any one instance. It either returns True or False according to the condition. You can compare across data types; including membership information (list, tuple, dictionary, set).</p>
+
+<p>The <code>is</code> operators answer the question: &quot;if the two comparisions share the same <strong>memory space</strong>&quot;. For most immutable variables, <code>is</code> equates to <code>==</code>. But, not for list, as this is a mutable data containter. Two lists can currently hold the same information, but have different memory locations.</p>
+<h3 id='4-4-bitwise-operators'>(4/4) Bitwise operators</h3><div class="highlight"><pre class="highlight plaintext"><code>a = 10 = 1010
+b = 6  = 0110
+
+print(a &amp; b)                    # 2  = 0010. Spots overlaps.
+print(a | b)                    # 14 = 1110 = 8+4+2
+print(~a)                       # -11 = -(1010 + 1)
+print(a ^ b)                    # 12 = 1100. Has to be 1/0 pairing.
+print(a &gt;&gt; 1)                   # 10 = 0101. All bits move to the right.
+print(a &lt;&lt; 2)                   # 40 = 101000. All bits move to the left.
+</code></pre></div>
+<p>Bitwise operators acts on bits and performs bit by bit operation.</p>
+<h1 id='datatypes-and-operators'>Datatypes and operators</h1><div class="highlight"><pre class="highlight plaintext"><code>print(type(variable))           # use this to identify the type
+
+123         # integer
+1.23        # float
+"Hello"     # Digits, punctuation, and ascii letters
+
+[1,2,3]     # List - can contain mixed datatypes
+(1,2,3)     # Tuple
+{"key": 1}  # Dictionary
+{1,2,3}     # Set
+</code></pre></div>
+<p>There are basic datatypes (&quot;primitives&quot;) that are found in all computing languages.</p>
+
+<p>More advanced datatypes (&quot;Data structures&quot;) are <em>collections</em> of the basic datatypes. Data structures comes in two flavors - ordered and un-ordered.</p>
+
+<table><thead>
+<tr>
+<th></th>
+<th>Mutable</th>
+<th>Immutable</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Ordered</td>
+<td>list</td>
+<td>tuple</td>
+</tr>
+<tr>
+<td>Un-ordered</td>
+<td>dictionary</td>
+<td>set</td>
+</tr>
+</tbody></table>
+
+<p>Note that <strong>sets</strong> have mutable and immutable variations.</p>
+<h2 id='number'>Number</h2><div class="highlight"><pre class="highlight plaintext"><code>weight = 64.5
+height = 1.69
+
+BMI = weight / (height ** 2)    # 22.583242883652535
+'%.3f'%(BMI)                    # 22.583
+round(BMI,2)                    # 22.58
+
+BMI + 5                         # 27.583242883652535
+</code></pre></div>
+<p>Integer and floats are python&#39;s most common number datatype. You can use arithmetic operators as boolean values.</p>
+<h2 id='string'>String</h2>
+<p>Places where you might encounter strings.</p>
+
+<table><thead>
+<tr>
+<th>Places</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Asking for user input</td>
+<td><code>name = input(&quot;What is your name? &quot;)</code></td>
+</tr>
+<tr>
+<td>Validating a string</td>
+<td><code>if &quot;n&quot; in string:</code></td>
+</tr>
+</tbody></table>
+
+<p>A method in Python behaves similarly to a function. Methods actually are functions that are called using dot notation.</p>
+
+<p>Some methods do not touch the base value and returns a new temporary output. Make sure to save these values as a new variable. While other method change the values of the base variable (these methods contains &quot;side-effects&quot;).</p>
+
+<p>Run <code>dir(str)</code> to see a list of available methods for that object.</p>
+
+<p>Python treats lists and strings as iterables, thus methods that work for lists will work for strings.</p>
+<h3 id='manipulating-strings'>Manipulating strings</h3><div class="highlight"><pre class="highlight plaintext"><code>"hELLO".capitalize()        # "Hello"                       Only first character
+"hey hello".title()         # "Hey Hello"                   Title style
+"hello123".upper()          # "HELLO123"                    All alphabets
+"HELLO123".lower()          # "hello123"                    All alphabets
+"hello".ljust(15,' ')       # "hello          "             efault fill character is whitespace
+"hello".center(25,'~')      # "~~~~~hello~~~~~"             Centralize and fill
+"   boo   ".strip()         # "boo"                         Combines .lstrip() and .rstrip()
+"hey.hey".split('.', 1)     # ['hey', 'hey']                Default seperator is ' ', specify maxsplit pieces
+"fat\tbunny".expandtabs()   # 'fat     bunny'               Fills until next tabspace (default by 8 spaces)
+"German_ß".casefold()       # "german_ss'                   For non-english languages. In German (ß.upper, ss.lower)
+</code></pre></div>
+<p>You can manipulate string by adding (concatenate) or padding the string with characters.</p>
+
+<p>One common use case for manipulating strings is to retrieve specific information from user-input. In this scenario is crucial to understand the format on the incoming data in order to formulate rules to parse the data.</p>
+
+<p>You can also format a string for output. Your use-case may require you to print to console using a certain format (for readability) or use spacing to create a diagram.</p>
+<h3 id='string-interpolation'>String interpolation</h3><div class="highlight"><pre class="highlight plaintext"><code># 1. OG method from C
+'In %d years I have spotted %g %s.' % (3, 0.1, 'camels')    # tuple elements are processed sequentially
+                                                            # data types must match
+
+"My %s is %i." % ('dog',10)                                 # "My dog is 10."
+"%(x)03d and %(y)d" % ({"x": 2, "y": 10})                   # '002 and 10'
+
+# 2. format() method.
+"My {} is {}.".format('dog',10)                             # no need to specify data type
+"My {0} is {1}.".format('dog',10)                           # using index calls
+"{x} and {y}".format(x=2, y=10)                             # using named index
+"{x:03d} and {y}".format_map({"x": 2, "y": 10})             # using key index
+
+# 3. f-string format
+name = "bunny"
+book = {'chapter':"introduction","page":2}
+
+f"{name} is reading the book {book['chapter']!r} on page {book['page']:03d}"
+&gt;&gt;&gt; "bunny is reading the book 'introduction' on page 002"
+</code></pre></div>
+<p>It is common to format strings for output. This is used in logging scenarios or used to write informative <code>repr</code> when creating your own modules and packages.</p>
+
+<p>One way to format string dynamically with variables is to use <strong>String interpolation</strong>. Using this, you can substitute variables in the string outputs to create dynamic content. From python 3.8&lt;, it is recommended to use <a href="https://docs.python.org/3/reference/lexical_analysis.html#f-strings">f-strings</a>.</p>
+
+<p>With f-strings, you can perform conversion [!] and formatting [:]. The conversion specifier is mostly used to cast non-string values into stringdatatypes (<code>!s</code> or <code>!r</code>).</p>
+
+<p>Other dated methods for string interpolation are available in python. You can use the <a href="https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting"><strong>% method</strong></a> most practiced in the C language.</p>
+
+<p>You may also use the built-in <code>.format()</code> method to apply treatment to your output string. This <a href="https://docs.python.org/3/library/stdtypes.html#string-formatting">format() method</a> allowed you to use key-value pairs for string interpolation. This was a huge improvement in code readability. However, the resulting code was often very lengthy.</p>
+<h3 id='searching-strings'>Searching strings</h3><div class="highlight"><pre class="highlight plaintext"><code>"bunny".count('n')          # 2                             Case sensitive
+"Hello".find('l')           # 2                             Case sensitive, "-1" means not found
+"Hello".rfind('l')          # 3                             Search from end
+"Hello".index('w')          # ValueError: substring not found
+</code></pre></div>
+<p>It is common to search for matching in strings. See <a href="#">regex</a> for more information on string matching.</p>
+
+<p>It may be sufficient to find where a value exist (&#39;match&#39; in string), while other use-cases might require you to obtain the index of the occurrence.</p>
+<h3 id='evaluating-strings'>Evaluating strings</h3><div class="highlight"><pre class="highlight plaintext"><code>sample_str.endswith('.')    # True                          Case sensitive (check for company email address)
+sample_str.isspace()        # False                         Only whitespace (e.g. \t \n) (i.e. useless strings)
+sample_str.isprintable()    # True                          Spots non-printable characters (e.g. escape sequences)
+sample_str.isalnum()        # False                         Spots whitespace, symbols
+sample_str.isnumeric()      # False                         Spots whitespace, symbols, alphabets.
+sample_str.isalpha()        # False                         Spots whitespace, symbols, numeric characters (super/sub, fractions)
+sample_str.islower()        # False                         Spots whitespace, symbols, numeric characters, UPPERCASE
+sample_str.isupper()        # False                         Spots whitespace, symbols, numeric characters, lowercase
+sample_str.istitle()        # True                          Spots Nicely Titled Strings Including $@#$ Symbols
+</code></pre></div>
+<p>Another common scenario is to evaluate strings against certain criteria. Checking if the string contains numeric characters or alphabets.</p>
+<h2 id='list'>List</h2><div class="highlight"><pre class="highlight plaintext"><code>list_friends[0]                         # first item of the list        0 steps from the front
+list_friends[len(list_friends) - 1 ]    # last item of the list         Shorthand: use -1
+list_months[6:]                         # jul to dec
+list_months[:3]                         # jan, feb, mar                 Exclude [3]
+list_months[::2]                        # all odd months                Step by 2
+</code></pre></div>
+<p>An ordered collection of items. The items are mutable and a list can contain duplicates.</p>
+
+<p>Python treats lists and strings as iterables, thus methods that work for lists will work for strings.</p>
+<h3 id='slicing'>Slicing</h3><div class="highlight"><pre class="highlight plaintext"><code>basket = ["apple", "banana", "carrot"]
+basket[1:]      #["banana", "carrot"]
+basket[:-1]     # ["apple", "banana"]
+</code></pre></div>
+<p>Ordered collections can be accessed by the index. Index supports <em>slicing</em>.</p>
+
+<p>Slicing returns an images of the list.</p>
+<h3 id='sort'><code>sort()</code></h3><div class="highlight"><pre class="highlight plaintext"><code>sorted(basket, reverse=True)            # ["carrot", "banana", "apple"]
+basket.sort(reverse=True)               # Updates existing list, but does not return anything!
+</code></pre></div>
+<p>This is a built-in method for operating on list datatypes. Since, this is a destrucive action, it is recommended that you use it with caution.</p>
+
+<p>Unless necessary, it is recommended to use the first-level function <code>sorted()</code> instead.</p>
+<h3 id='join'><code>.join()</code></h3><div class="highlight"><pre class="highlight plaintext"><code>"-".join(basket)                        # "apple-banana-carrot"
+</code></pre></div>
+<p>The input to this method is an iterable. If a list is provided, each element within the list is processed. If a string is provided, each character will be processed.</p>
+
+<p>This method returns a string. The input is concatenated with the joining character provided.</p>
+<h3 id='the-python-way-of-working-with-list'>The python way of working with list</h3><div class="highlight"><pre class="highlight plaintext"><code>even_numbers = [ x for x in range(0,100) if x%2==0  ]
+</code></pre></div>
+<p>List comprehension provides a concise way of creating lists. For more information, see <a href="#">here</a>.</p>
+<h2 id='tuple'>Tuple</h2><div class="highlight"><pre class="highlight plaintext"><code>bmi_me = 170, 63.9
+height_me, weight_me = bmi_me           # assigning multiple variables with a tuple
+height_me, weight_me = 170, 63.9        # the variable on LHS are assigned to the values on RHS respectively
+
+def merge_into_tuple(*arg):             # tuple gathering
+    return  arg
+
+tu = (7,3)
+divmod(*tu)                             # tuple scattering
+</code></pre></div>
+<p>Works like a list. But they are immutable. For more information about differences, see <a href="https://www.afternerd.com/blog/difference-between-list-tuple/">here</a>.</p>
+
+<p>Tuples works best for collection of data that go together (.e.g longitudinal and latitudinal coordinates). You can call elements out by the index.</p>
+<h2 id='dictionary'>Dictionary</h2><div class="highlight"><pre class="highlight plaintext"><code>elements = {
+    "hydrogen" : {                                      # note the : symbol, this key corresponds to a value (dictionary)
+        "number" : 1,
+        "weight" : 1.00794,
+        "symbol" : H
+    },
+    "helium" : {
+        "numnber" : 2,
+        "weight" : 4.002602,
+        "symbol" : "He"
+    }
+}
+
+print(elements["helium"]["weight"])                     # call the nested values by calling the parent keys
+</code></pre></div>
+<p>A collection of <code>key:value</code> pairs. In other languages, it might be called an associative array. Items are retrieved and added using a single &quot;lookup&quot; tag. Notice the simply way of adding new records, unlike <code>.append()</code> or <code>.add()</code>.</p>
+
+<p>Nested dictionaries are ways to store data in a tree structure. Much like other langugages (e.g. JSON). See here for other <a href="/python/basics/data-types-and-operators/data-collection-methods.md#dictionary-methods">dictionary methods</a>.</p>
+<h3 id='get'><code>.get()</code></h3><div class="highlight"><pre class="highlight plaintext"><code>pets = {"population": 2, "rabbit": "malfoy", "dog": "goldie"}
+
+print("flowers" in pets)                     # KeyError, as the record does not exist
+print(pets.get("flower"))                    # prints "none"
+print(pets.get("flower", "Missing key!"))    # "Missing key!"
+</code></pre></div>
+<p>This method retrieves the value corresponding to the given key. You can specify the return value if the key does not exist.</p>
+<h3 id='keys'><code>.keys()</code></h3><div class="highlight"><pre class="highlight plaintext"><code>pets.keys()             # ["population", "rabbit", "dog"]
+
+"dog" in pets           # True
+"dog" in pets.keys()    # True
+</code></pre></div>
+<p>This method returns a list of keys. Use this method to iterate through the keys of a dictionary.</p>
+
+<p><strong>Note</strong>: Since python innately treats dictionary as keys. It is redundant to use the membership operator on <code>.keys().</code></p>
+<h3 id='values'><code>.values()</code></h3><div class="highlight"><pre class="highlight plaintext"><code>
+</code></pre></div>
+<p>Use the <code>.values()</code> method to call out all the values. Note that this method is a <a href="https://docs.python.org/3/library/stdtypes.html#dict-views">view object</a>.</p>
+
+<p>If your dictionary is a collection of similarly formatted elements, use <code>.values()</code> to run through them as you would with a list.</p>
+<h3 id='items'><code>.items()</code></h3><div class="highlight"><pre class="highlight plaintext"><code>pets.items()            # [('population', 2), ('rabbit', 'malfoy'), ('dog', 'goldie')]
+</code></pre></div>
+<p>This method returns a list of tuples. Each tuple contains the key at index 0, and the stored value as index 1.</p>
+
+<p>If your value is a <em>collection</em> of items, remember to apply additional parsing to read the nested data.</p>
+<h2 id='set'>Set</h2><div class="highlight"><pre class="highlight plaintext"><code>set_organs = {"brain", "heart", "liver"}
+set_face = set(["ear", "ear", "eye", "eye"])            # creating a set from a list
+</code></pre></div>
+<p>A collection of unique values without any order.</p>
+
+<p>Sets are most useful to evaluate if there are common items between two collections.</p>
 <h1 id='environment-management'>Environment management</h1>
 <p>Python is an awesome scripting language to perform a variety of computation and automated tasks. It is also open-source/extensible, meaning that contributors are continually upgrading and adding new tools to the &quot;Python tool kit&quot;. This includes newer Python versions (e.g. <code>v3.8.0</code> introduced the walrus operator) and packages.</p>
 <h2 id='version-and-environment-management-in-python'>Version and Environment management in Python</h2>
@@ -498,12 +918,16 @@ print(list(enumerate(seasons)))                     # [(0, 'Spring'), (1, 'Summe
 <h2 id='list-comprehension'>List comprehension</h2><div class="highlight"><pre class="highlight plaintext"><code>long_method = []
 for x in range(0, 9, 2):
     long_method.append(x**2)                                            # [0, 4, 16, 36, 64]
+print(x)                                                                # x persist outside. Bad practice
 
 lamba_method = list(map(lambda x: x**2, range(0, 9, 2)))
+
 short_method = [x ** 2 for x in range(0, 9, 2)]                         # list
 generators = (x ** 2 for x in range(0, 9, 2))                           # generator
 </code></pre></div>
-<p>List comprehension provides a concise way of creating lists. For more information, see <a href="/python/basics/data-types-and-operators/data-container-methods.md#list-methods">here</a>.</p>
+<p>List comprehension provides a concise way of creating lists. In the long form, list comprehension is taking a block of logic (<em>function</em> + <em>loop</em>) and appying it to an iterable.</p>
+
+<p>This has the advantage of requiring less memory capacity. When using the <strong>long method</strong>, a variable named <code>x</code> will still exist outside of the loop. But with the <strong>lambda_method</strong> , the <code>lambda x:</code> does not persist outside of the code block.</p>
 
 <aside class="success">
     See here for more information on [generators](/iterators-and-generators/iterators-and-generators.md).

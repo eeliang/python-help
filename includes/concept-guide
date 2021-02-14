@@ -1,0 +1,153 @@
+<h1 id='concept-guide'>Concept guide</h1>
+<p>Here we will run through key concepts in python.</p>
+<h2 id='logging'>Logging</h2><div class="highlight"><pre class="highlight plaintext"><code>variable_1 = "hello"
+variable_2 = "my name is"
+
+print(variable_1 + " " + variable_2)   # prints "hello my name is"
+print(variable_1, variable_2)          # prints "hello my name is"
+
+variable_3 = variable_1 + " " + variable_2 + " piggy."
+
+print(variable_3)                      # prints "hello my name is piggy."
+</code></pre></div>
+<p>There are several ways to communicate between the backend and the &quot;frontend&quot;.</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>print()</td>
+<td>Prints the string or number unto the console.</td>
+</tr>
+<tr>
+<td>logger</td>
+<td>An built-in module that handles &quot;print&quot; outputs based on the environment.</td>
+</tr>
+<tr>
+<td>return</td>
+<td>Pass values between stacks. Use as a terminating statement for functions.</td>
+</tr>
+</tbody></table>
+<h2 id='libraries-modules-and-packages'>Libraries, modules, and packages</h2><div class="highlight"><pre class="highlight plaintext"><code>|----------------- distribution -----------------|
+|                                                |
+|               library / package                |
+|                       |                        |
+|           -------------------------            |
+|           |                       |            |
+|   | -------------- |      | -------------- |   |
+|   |     Module     |      |     Module     |   |
+|   | -------------- |      | -------------- |   |
+|   |     class      |      |     class      |   |
+|   |    function    |      |    function    |   |
+|   |    variable    |      |    variable    |   |
+|   | -------------- |      | -------------- |   |
+|________________________________________________|
+</code></pre></div>
+<p>The python ecosystem is made up of directories and sub-directories of python files (<code>.py</code>).</p>
+
+<p>Libraries/packages are collections of modules that can be <em>imported</em> into your python script. The python standard library is an extensive library that is prebuilt in most (if not all) python environments. For specialized disciplines, open-sourced libraries like <em>nunmpy</em> or <em>pandas</em> were created to offer useful functions like <code>.plot()</code>.</p>
+
+<p>The collection is <em>packaged</em> as a directory of files. Since it is hierarchcal, you can access <code>package.module</code> with object .method syntax</p>
+
+<p>Each module is a single python file. A collection of modules is known as a library. When libraries are large enough, they can be segmented into groups of libraries under a single package.</p>
+
+<p>Read this forum for <a href="https://www.quora.com/What-is-the-difference-between-Python-modules-packages-libraries-and-frameworks">clarification</a>.</p>
+<h3 id='modules'>Modules</h3>
+<p>Modules are files that contain code. They are task specfic and usually serve a single purpose (e.g. <code>import math</code>). Unlike libraries/packages which cater to a variety of user needs.</p>
+
+<p>They can be imported into your <strong>main</strong> python script. Subsequently, prebuilt functions and object methods will be available to use.</p>
+<h3 id='import'><code>import</code></h3><div class="highlight"><pre class="highlight plaintext"><code>import math
+math.factorial(4)
+
+from math import factorial
+factorial(4)
+
+import pandas as pd         # Alias namespace
+df = pd.Dataframe()
+</code></pre></div>
+<p>When you import the module, you are claiming the module filename as the namespace. Otherwise, you can use an alias to define a namespace for your module.</p>
+
+<p>You may also import and specific class / function / variable.</p>
+
+<p>It is recommended to use <code>import</code> statements with the module namespace intact. This allows other code-reviewer to discern when a function is called from a local file or from an external module.</p>
+<h3 id='distribution'>Distribution</h3>
+<p>Distributions are implementations of python that come prebuild with certain librarys. <strong>Anaconda</strong> is a python distribution for data anlytics that has the <code>matplotlib</code> and <code>numpy</code> packages attached, ready to be imported.</p>
+
+<p>The bare-bones <strong>CPython</strong> accessible from terminal is an implementation of python without &quot;extra&quot; libraries - only the python standard library.</p>
+
+<p>Find the current version of the python distribution <a href="https://www.python.org/">here</a>.</p>
+<h3 id='third-party-libraries'>Third party libraries</h3>
+<p>Third party libraries can be installed with <code>pip install &lt;&gt;</code>. Run this command in the <em>command line interface</em>.</p>
+<h2 id='reserved-words-in-python'>Reserved words in Python</h2><div class="highlight"><pre class="highlight plaintext"><code>True, False                     # These are boolean values
+None                            # no data
+from &lt;&gt; import &lt;&gt; as &lt;&gt;
+if: elif: else:                 # conditionals
+in                              # membership
+for                             # loops
+while
+with                            # Useful for parse files
+def: return                     # defining functions
+lambda                          # shorthand for functions. https://www.w3schools.com/python/python_lambda.asp
+and, or, not                    # logic operators
+is                              # identity operators
+global
+assert, break, del, except, finally, is
+try, except
+yield, raise
+</code></pre></div>
+<p>There are reserved words in python, which are pre-defined as built-in functions, type Conversion, and other control flow tools. These cannot be used as variable names.</p>
+<h2 id='operators'>Operators</h2>
+<p>Operators are based on <em>boolean</em> values. It takes two value at any one instance and computes a <code>True/False</code> output.</p>
+<h3 id='1-4-logic-comparison-relational-operators'>(1/4) Logic/Comparison/Relational operators</h3><div class="highlight"><pre class="highlight plaintext"><code>True or False                   # this is True
+not False                       # this is True
+
+x == y                          #
+x != y                          # x &gt; y                           # x &lt; y
+x &gt;= y
+x &lt;= y
+</code></pre></div>
+<p>These operators compares the relation between two values, in any one instance.</p>
+
+<p>When evaluating strings, remember that python evaluates iteratively based on the character set, starting at the first index. Also, note that comparisons are case sensitive - capital letters have a smaller ASCII value than lowercase letters.</p>
+
+<p>TODO: Concept of lazy evaluation. <code>and</code> vs <code>or</code> operator.</p>
+<h3 id='2-4-arithmetic-operators'>(2/4) Arithmetic operators</h3><div class="highlight"><pre class="highlight plaintext"><code>addition        = 1 + 2
+subtraction     = 15 - 2
+multiplication  = 15 * 2
+exponential     = 15 ** 2
+division        = 15 / 2
+division_round  = 15 // 2       # round down to integer value
+modulus         = 15 % 2        # remainder
+</code></pre></div>
+<p>Operators that are used to perform comparisions using mathematical notation. Arithmetic operation uses <code>==</code> as &quot;equals&quot;, <code>!=</code> as &quot;not-equals&quot;.</p>
+
+<p>Python performs the <code>modulus</code> operation different from other programming languages. See this image on the comparison between programming languages for modulus operation on negative numbers <a href="https://drive.google.com/file/d/1DhX5IWIKdhjtxqbWr4WQ68LRv_rgWenl/view?usp=sharing">here</a>.</p>
+
+<p>Arithmetic operators works for strings, list, and  tuples, but behave differently.</p>
+<h3 id='3-4-identity-operators'>(3/4) Identity operators</h3><div class="highlight"><pre class="highlight plaintext"><code>a = [1, 2, 3]
+b = a
+c = [1, 2, 3]
+
+print(a == c)                   # this is true, == compares the values
+print(a is c)                   # this is false
+print(a is b)                   # this is true, the variables are set to mirror the memory location.
+
+print(1 in a)                   # this is true
+</code></pre></div>
+<p>This is also based on <em>boolean</em> values. These operators describe the relation between two values, in any one instance. It either returns True or False according to the condition. You can compare across data types; including membership information (list, tuple, dictionary, set).</p>
+
+<p>The <code>is</code> operators answer the question: &quot;if the two comparisions share the same <strong>memory space</strong>&quot;. For most immutable variables, <code>is</code> equates to <code>==</code>. But, not for list, as this is a mutable data containter. Two lists can currently hold the same information, but have different memory locations.</p>
+<h3 id='4-4-bitwise-operators'>(4/4) Bitwise operators</h3><div class="highlight"><pre class="highlight plaintext"><code>a = 10 = 1010
+b = 6  = 0110
+
+print(a &amp; b)                    # 2  = 0010. Spots overlaps.
+print(a | b)                    # 14 = 1110 = 8+4+2
+print(~a)                       # -11 = -(1010 + 1)
+print(a ^ b)                    # 12 = 1100. Has to be 1/0 pairing.
+print(a &gt;&gt; 1)                   # 10 = 0101. All bits move to the right.
+print(a &lt;&lt; 2)                   # 40 = 101000. All bits move to the left.
+</code></pre></div>
+<p>Bitwise operators acts on bits and performs bit by bit operation.</p>
