@@ -1,0 +1,85 @@
+<h1 id='environment-management'>Environment management</h1>
+<p>Python is an awesome scripting language to perform a variety of computation and automated tasks. It is also open-source/extensible, meaning that contributors are continually upgrading and adding new tools to the &quot;Python tool kit&quot;. This includes newer Python versions (e.g. <code>v3.8.0</code> introduced the walrus operator) and packages.</p>
+<h2 id='version-and-environment-management-in-python'>Version and Environment management in Python</h2>
+<p>For every problem, there will be 101 ways to address it. But it is important to remember that the &quot;best&quot; solution is determined by the working environment. If you are working in a team, there are standards for what is the Python version to be working on, or the package versions listed in <code>requirement.txt</code>.</p>
+
+<p>Further, these environment constrains change with each project. Older projects may not receive continued support and operate in an archaic environment - Python v2.7.16 (RIP 2020).</p>
+
+<p>Lastly, you may wish to keep the latest (or last known stable) version of Python on your personal machine. This allows you to explore new frameworks and experiment with the latest gadgets.</p>
+<h3 id='so-how-do-i-manage-all-these-different-environments'>So how do I manage all these different environments?</h3>
+<p>Enter <a href="https://github.com/pyenv/pyenv">pyenv</a>. A command-line tool that simplifies version management.</p>
+
+<p>Next, <a href="https://github.com/pyenv/pyenv-virtualenv">pyend-virtualenv</a>. A plugin that manages virtual environments.</p>
+<h2 id='how-to-use-pyenv'>How to use <strong>pyenv</strong></h2><h3 id='download-and-install-pyenv'>Download and install <strong>pyenv</strong></h3><div class="highlight"><pre class="highlight plaintext"><code>brew update
+brew install pyenv
+
+echo 'export PYENV_ROOT="$HOME/.pyenv"' &gt;&gt; ~/.zshrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' &gt;&gt; ~/.zshrc
+</code></pre></div>
+<p>Install <strong>pyenv</strong> as a command-line tool. For MacOS users, Brew is a convenient package manager.</p>
+
+<p>Next, add <strong>pyenv</strong> to your <code>PATH</code>. The specific setup will be different based on your OS and shell.</p>
+<h3 id='setting-up-pyenv-versions'>Setting up <strong>pyenv</strong> versions</h3><div class="highlight"><pre class="highlight plaintext"><code>pyenv install --list | grep 3.8
+pyenv install 3.8.5
+pyenv version               # 3.7.6 (set by ~/.pyenv/version)
+python --version            # Python 3.7.6
+pyenv global 3.8.5
+pyenv version               # 3.8.5 (set by ~/.pyenv/version)
+python --version            # Python 3.8.5
+</code></pre></div>
+<ul>
+<li><code>install</code></li>
+</ul>
+
+<p>Use this command to call <strong>pyenv</strong> to install different versions of python. Installing a fresh version of python might take a while.
+Add the <code>--list</code> flag to view all available versions.</p>
+
+<ul>
+<li><code>versions</code></li>
+</ul>
+
+<p>Check the available python version that has been downloaded.</p>
+
+<ul>
+<li><code>version</code></li>
+</ul>
+
+<p>Check the python version that is designated as the current version.</p>
+
+<ul>
+<li><code>global</code></li>
+</ul>
+
+<p>Set the default version of python on your machine. It is recommended to use the last known stable version of python for this.</p>
+<h3 id='setting-up-your-workspace-with-pyenv-versions'>Setting up your workspace with <strong>pyenv</strong> versions</h3><div class="highlight"><pre class="highlight plaintext"><code>cd project-dir
+pyenv local 2.7.16
+cat .python-version       # 2.7.16
+pyenv version             # 3.8.5 (set by ~/project-dir/.python-version)
+</code></pre></div>
+<p>When working in specific projects (i.e. specific directories), you can define the Python version that you want to work in. The version is saved in <code>.python-version</code>.</p>
+<h3 id='automatically-change-to-directory-versions'>Automatically change to directory versions</h3><div class="highlight"><pre class="highlight plaintext"><code>eval '$(pyenv init -)' &gt;&gt; .zshrc
+</code></pre></div>
+<p>Add this code snippet in your shell startup files, pyenv will change to the local version whenever you move to a directory with a <code>.python-version</code> definition.</p>
+<h2 id='how-to-use-pyenv-virtualenv'>How to use <strong>pyenv-virtualenv</strong></h2><h3 id='download-and-install-pyenv-2'>Download and install <strong>pyenv</strong></h3><div class="highlight"><pre class="highlight plaintext"><code>brew install pyenv-virtualenv
+</code></pre></div>
+<p>Install <strong>pyenv-virtualenv</strong> as a command-line tool. For MacOS users, Brew is a convenient package manager.</p>
+<h3 id='setting-up-virtual-environments'>Setting up virtual environments</h3><div class="highlight"><pre class="highlight plaintext"><code>pyenv virtualenv 3.7.6 websiteproject
+pyenv local websiteproject
+pyenv activate websiteproject           # prompt= ( websiteproject ) $
+pyenv deactivate                        # prompt= $
+</code></pre></div>
+<p>Define a virtual environment with the following command. This will create a directory to contain all the configuration for a <em>user-defined</em> Python version with only the default packages. Packages installed in this directory will not affect or be affected by other package versions located elsewhere on your machine.</p>
+<h3 id='automatically-switch-to-virtual-environments'>Automatically switch to virtual environments</h3><div class="highlight"><pre class="highlight plaintext"><code>eval '$(pyenv virtualenv-init -)' &gt;&gt; .zshrc
+</code></pre></div>
+<p>If you add this code snippet in your shell startup files, pyenv-virtualenv will activate the virtual environment automatically whenever you move to a directory with a <code>.python-version</code> definition.</p>
+<h2 id='faq'>FAQ</h2>
+<p>Some errors and solutions that i encountered along the way. For MacOS users, Brew is a convenient package manager.</p>
+<h3 id='pyenv-python-command-not-found'><code>pyenv: python: command not found</code></h3><div class="highlight"><pre class="highlight plaintext"><code>whence python               # usr/bin/python
+ln -s python3 python
+whence python               # User/&lt;username&gt;/.pyenv/shims/python
+</code></pre></div>
+<p>This error occurs because the current version of python is different from where you installed <strong>pyenv</strong>. For example, if you installed <strong>pyenv</strong> with python3, check that the <code>python3</code> is the default.</p>
+
+<ul>
+<li>Add a symlink to your $PYENV_ROOT/versions/<current version>/bin</li>
+</ul>

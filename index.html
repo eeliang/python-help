@@ -291,7 +291,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -300,12 +300,6 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo-1e815a84.png" class="logo" alt="" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
-        </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -313,30 +307,60 @@
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
-          </li>
-          <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
-                  </li>
-                  <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#best-practices-for-finding-solutions" class="toc-h2 toc-link" data-title="Best practices for finding solutions">Best practices for finding solutions</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#environment-management" class="toc-h1 toc-link" data-title="Environment management">Environment management</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#version-and-environment-management-in-python" class="toc-h2 toc-link" data-title="Version and Environment management in Python">Version and Environment management in Python</a>
+                  </li>
+                  <li>
+                    <a href="#how-to-use-pyenv" class="toc-h2 toc-link" data-title="How to use pyenv">How to use <strong>pyenv</strong></a>
+                  </li>
+                  <li>
+                    <a href="#how-to-use-pyenv-virtualenv" class="toc-h2 toc-link" data-title="How to use pyenv-virtualenv">How to use <strong>pyenv-virtualenv</strong></a>
+                  </li>
+                  <li>
+                    <a href="#faq" class="toc-h2 toc-link" data-title="FAQ">FAQ</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#working-with-python-list" class="toc-h1 toc-link" data-title="Working with python list">Working with python list</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#zip" class="toc-h2 toc-link" data-title="zip()"><code>zip()</code></a>
+                  </li>
+                  <li>
+                    <a href="#enumerate" class="toc-h2 toc-link" data-title="enumerate()"><code>enumerate()</code></a>
+                  </li>
+                  <li>
+                    <a href="#map" class="toc-h2 toc-link" data-title="map()"><code>map()</code></a>
+                  </li>
+                  <li>
+                    <a href="#list-comprehension" class="toc-h2 toc-link" data-title="List comprehension">List comprehension</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#control-flow" class="toc-h1 toc-link" data-title="Control flow">Control flow</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#conditional-statements" class="toc-h2 toc-link" data-title="Conditional statements">Conditional statements</a>
+                  </li>
+                  <li>
+                    <a href="#loops" class="toc-h2 toc-link" data-title="Loops">Loops</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href='httos://github.com/eeliang'>Content written by Eeliang</a></li>
             <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -344,251 +368,218 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Hello reader!</p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>Welcome to my little store of python learning. This is where i store my go-to content and i refer to this page often.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>You will also find little tips and tricks to make coding in python easier.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p>If you enjoy browsing content from a newbie-peer, you will find this documentation helpful.</p>
+<h3 id='best-practices-for-finding-solutions'>Best practices for finding solutions</h3>
+<p>Learn to refer to the <a href="https://docs.python.org/3/">Python Documentation</a> for basic knowledge.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<p>For a bite-size walkthrough of concepts, I recommended <a href="https://www.programiz.com/python-programming">programiz</a>.</p>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
+<p>Lastly, do it yourself! As you are going through the documentation, open up a terminal or python IDE and write the code snippets. Nothing beats learning than trying it yourself.</p>
+<h1 id='environment-management'>Environment management</h1>
+<p>Python is an awesome scripting language to perform a variety of computation and automated tasks. It is also open-source/extensible, meaning that contributors are continually upgrading and adding new tools to the &quot;Python tool kit&quot;. This includes newer Python versions (e.g. <code>v3.8.0</code> introduced the walrus operator) and packages.</p>
+<h2 id='version-and-environment-management-in-python'>Version and Environment management in Python</h2>
+<p>For every problem, there will be 101 ways to address it. But it is important to remember that the &quot;best&quot; solution is determined by the working environment. If you are working in a team, there are standards for what is the Python version to be working on, or the package versions listed in <code>requirement.txt</code>.</p>
+
+<p>Further, these environment constrains change with each project. Older projects may not receive continued support and operate in an archaic environment - Python v2.7.16 (RIP 2020).</p>
+
+<p>Lastly, you may wish to keep the latest (or last known stable) version of Python on your personal machine. This allows you to explore new frameworks and experiment with the latest gadgets.</p>
+<h3 id='so-how-do-i-manage-all-these-different-environments'>So how do I manage all these different environments?</h3>
+<p>Enter <a href="https://github.com/pyenv/pyenv">pyenv</a>. A command-line tool that simplifies version management.</p>
+
+<p>Next, <a href="https://github.com/pyenv/pyenv-virtualenv">pyend-virtualenv</a>. A plugin that manages virtual environments.</p>
+<h2 id='how-to-use-pyenv'>How to use <strong>pyenv</strong></h2><h3 id='download-and-install-pyenv'>Download and install <strong>pyenv</strong></h3><div class="highlight"><pre class="highlight plaintext"><code>brew update
+brew install pyenv
+
+echo 'export PYENV_ROOT="$HOME/.pyenv"' &gt;&gt; ~/.zshrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' &gt;&gt; ~/.zshrc
 </code></pre></div>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
+<p>Install <strong>pyenv</strong> as a command-line tool. For MacOS users, Brew is a convenient package manager.</p>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
+<p>Next, add <strong>pyenv</strong> to your <code>PATH</code>. The specific setup will be different based on your OS and shell.</p>
+<h3 id='setting-up-pyenv-versions'>Setting up <strong>pyenv</strong> versions</h3><div class="highlight"><pre class="highlight plaintext"><code>pyenv install --list | grep 3.8
+pyenv install 3.8.5
+pyenv version               # 3.7.6 (set by ~/.pyenv/version)
+python --version            # Python 3.7.6
+pyenv global 3.8.5
+pyenv version               # 3.8.5 (set by ~/.pyenv/version)
+python --version            # Python 3.8.5
 </code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
+<ul>
+<li><code>install</code></li>
+</ul>
+
+<p>Use this command to call <strong>pyenv</strong> to install different versions of python. Installing a fresh version of python might take a while.
+Add the <code>--list</code> flag to view all available versions.</p>
+
+<ul>
+<li><code>versions</code></li>
+</ul>
+
+<p>Check the available python version that has been downloaded.</p>
+
+<ul>
+<li><code>version</code></li>
+</ul>
+
+<p>Check the python version that is designated as the current version.</p>
+
+<ul>
+<li><code>global</code></li>
+</ul>
+
+<p>Set the default version of python on your machine. It is recommended to use the last known stable version of python for this.</p>
+<h3 id='setting-up-your-workspace-with-pyenv-versions'>Setting up your workspace with <strong>pyenv</strong> versions</h3><div class="highlight"><pre class="highlight plaintext"><code>cd project-dir
+pyenv local 2.7.16
+cat .python-version       # 2.7.16
+pyenv version             # 3.8.5 (set by ~/project-dir/.python-version)
+</code></pre></div>
+<p>When working in specific projects (i.e. specific directories), you can define the Python version that you want to work in. The version is saved in <code>.python-version</code>.</p>
+<h3 id='automatically-change-to-directory-versions'>Automatically change to directory versions</h3><div class="highlight"><pre class="highlight plaintext"><code>eval '$(pyenv init -)' &gt;&gt; .zshrc
+</code></pre></div>
+<p>Add this code snippet in your shell startup files, pyenv will change to the local version whenever you move to a directory with a <code>.python-version</code> definition.</p>
+<h2 id='how-to-use-pyenv-virtualenv'>How to use <strong>pyenv-virtualenv</strong></h2><h3 id='download-and-install-pyenv-2'>Download and install <strong>pyenv</strong></h3><div class="highlight"><pre class="highlight plaintext"><code>brew install pyenv-virtualenv
+</code></pre></div>
+<p>Install <strong>pyenv-virtualenv</strong> as a command-line tool. For MacOS users, Brew is a convenient package manager.</p>
+<h3 id='setting-up-virtual-environments'>Setting up virtual environments</h3><div class="highlight"><pre class="highlight plaintext"><code>pyenv virtualenv 3.7.6 websiteproject
+pyenv local websiteproject
+pyenv activate websiteproject           # prompt= ( websiteproject ) $
+pyenv deactivate                        # prompt= $
+</code></pre></div>
+<p>Define a virtual environment with the following command. This will create a directory to contain all the configuration for a <em>user-defined</em> Python version with only the default packages. Packages installed in this directory will not affect or be affected by other package versions located elsewhere on your machine.</p>
+<h3 id='automatically-switch-to-virtual-environments'>Automatically switch to virtual environments</h3><div class="highlight"><pre class="highlight plaintext"><code>eval '$(pyenv virtualenv-init -)' &gt;&gt; .zshrc
+</code></pre></div>
+<p>If you add this code snippet in your shell startup files, pyenv-virtualenv will activate the virtual environment automatically whenever you move to a directory with a <code>.python-version</code> definition.</p>
+<h2 id='faq'>FAQ</h2>
+<p>Some errors and solutions that i encountered along the way. For MacOS users, Brew is a convenient package manager.</p>
+<h3 id='pyenv-python-command-not-found'><code>pyenv: python: command not found</code></h3><div class="highlight"><pre class="highlight plaintext"><code>whence python               # usr/bin/python
+ln -s python3 python
+whence python               # User/&lt;username&gt;/.pyenv/shims/python
+</code></pre></div>
+<p>This error occurs because the current version of python is different from where you installed <strong>pyenv</strong>. For example, if you installed <strong>pyenv</strong> with python3, check that the <code>python3</code> is the default.</p>
+
+<ul>
+<li>Add a symlink to your $PYENV_ROOT/versions/<current version>/bin</li>
+</ul>
+<h1 id='working-with-python-list'>Working with python list</h1><div class="highlight"><pre class="highlight plaintext"><code># Bad practice.
+
+count = []
+price_list = [1,2,3,4,5]
+
+for i in price_list:
+    count = count + i
+</code></pre></div>
+<p>Python lists are wonderful. They perform <code>.pop</code>, <code>.append</code> at O(1) time, as well as index operations at O(1) - combining the best of the Array and Linked List data structures.</p>
+
+<p>However, python is horrendously slow at performing custom operations to create, edit, or filter lists. Thus, it is recommended to use either a built-in function or to use list comprehensions.</p>
+<h2 id='zip'><code>zip()</code></h2><div class="highlight"><pre class="highlight plaintext"><code>x, y = [1, 2, 3], ["a", "b", "c"]
+zipped = zip(x, y)
+print(list(zipped))                     # [(1, "a"), (2, "b"), (3, "c")]
+x2, y2 = zip(*zipped)
+print(x == list(x2) and y == list(y2))  # True
+</code></pre></div>
+<p>You can create ordered data by <em>stitching</em>  matching pairs from different data containers.</p>
+
+<p>Use <code>zip()</code> to pull together <em>n</em> list into a list of tuples. <code>zip()</code> also works to un-zipped a <em>n</em> dimension list.</p>
+<h2 id='enumerate'><code>enumerate()</code></h2><div class="highlight"><pre class="highlight plaintext"><code>seasons = ['Spring', 'Summer', 'Fall', 'Winter']
+print(list(enumerate(seasons)))                     # [(0, 'Spring'), (1, 'Summer'), (2, 'Fall'), (3, 'Winter')]
+</code></pre></div>
+<p>Use <code>enumerate()</code> to create ordered data containers by attaching the index as a <strong>index</strong>:<strong>value</strong> pair.</p>
+<h2 id='map'><code>map()</code></h2><div class="highlight"><pre class="highlight plaintext"><code>map(lamda x: print(x), range(10))
+</code></pre></div>
+<p>This is the equivalent of <code>.each</code> in Javascript or <code>.foreach</code> in Ruby. This is a top-level function.</p>
+
+<p>Supply a function variable and <em>n</em> iterables to apply the function on.</p>
+<h2 id='list-comprehension'>List comprehension</h2><div class="highlight"><pre class="highlight plaintext"><code>long_method = []
+for x in range(0, 9, 2):
+    long_method.append(x**2)                                            # [0, 4, 16, 36, 64]
+
+lamba_method = list(map(lambda x: x**2, range(0, 9, 2)))
+short_method = [x ** 2 for x in range(0, 9, 2)]                         # list
+generators = (x ** 2 for x in range(0, 9, 2))                           # generator
+</code></pre></div>
+<p>List comprehension provides a concise way of creating lists. For more information, see <a href="/python/basics/data-types-and-operators/data-container-methods.md#list-methods">here</a>.</p>
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+    See here for more information on [generators](/iterators-and-generators/iterators-and-generators.md).
 </aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id='control-flow'>Control flow</h1>
+<p>Consider your code as a map. The machine is like a laser sharp <em>pointer</em> focused o a single line of your script (the backend). Each line has a corresponding output and each action (<code>input()</code>) has a corresponding reaction. Control flow directs where the <em>pointer</em> moves.</p>
+<h2 id='conditional-statements'>Conditional statements</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">propert_price</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"What is the price of your property: "</span><span class="p">))</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="k">if</span> <span class="nb">property</span> <span class="o">&lt;=</span> <span class="mi">1000</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s">"Let's make this deal happen."</span>
+<span class="k">elif</span> <span class="nb">property</span> <span class="o">&lt;=</span> <span class="mi">1200</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s">"Let's talk this out."</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s">"Call me back in 1 year."</span>                    <span class="c1"># good practice to prepare a condition for edge cases
+</span>
+<span class="k">if</span> <span class="nb">property</span> <span class="o">&lt;=</span> <span class="mi">1000</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s">"Let's make this deal happen."</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">property</span> <span class="o">&lt;=</span> <span class="mi">1200</span><span class="p">:</span>                                <span class="c1"># see the nested condition
+</span>        <span class="k">return</span> <span class="s">"Let's talk this out."</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">"Call me back in 1 year."</span>
 </code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves a specific kitten.</p>
+<p>Conditional statements act like switches to direct the <em>pointer</em> down one of many paths</p>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>All <code>if</code> conditional statements are boolean values. Thus, more complex flows are just simple conditions nested together. The 2 code examples are equivalent.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p>It is good coding practice to keep nested code blocks to a minimum. When possible, follow the first example that uses <code>if, elif,else</code>.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-X</span> DELETE <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
+<ul>
+<li><p>Checking if variable exists
+If you are check if a value exist, use the <code>if variable:</code> condition. This uses the <a href="#">truthy</a> logic.</p></li>
+<li><p>Return statements
+Take note if you are using return statements. Each function call will only execute one return statement. Ensure that your conditional statement does not contain 2&lt; or no return statements.
 <aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
+Return is only used for function calls. Ensure that your code is within a function block, else it will cause an error.
+</aside></p>
+<h2 id='loops'>Loops</h2></li>
+</ul>
+<div class="highlight"><pre class="highlight plaintext"><code>for word in sentence:
+    print()
+</code></pre></div>
+<p>An iterator/iterable is an object that reads one value/element at a time. For example, sequence types (strings, list, tuples) or non-sequence containers (dictionary, files).</p>
 
-<p>The Kittn API uses the following error codes:</p>
+<p>A <code>for</code> loop is a pre-determined number of iterations, where you are aware of how many time the code block will run. A <code>while</code> loop is an indefinite iteration, where the number of loops is unknown and only ends when the condition is met.</p>
 
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
-</tr>
-</tbody></table>
+<p>A good naming convention is to use singular-plural dyads:
+<code>for word in sentence:</code></p>
+<h3 id='range'>Range()</h3><div class="highlight"><pre class="highlight plaintext"><code>for i in range(1, 100, 2):
+    print(i)
+</code></pre></div>
+<p>Loops work well on pre-determind, fixed iterables. Create a loop with <code>range()</code>. This is an immutable sequence of integers. The arguments are (start, stop, step).</p>
+<h3 id='break-and-continue-flow'>Break and continue flow</h3><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">manifest</span> <span class="o">=</span> <span class="p">[(</span><span class="s">"bananas"</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="s">"mattresses"</span><span class="p">,</span> <span class="mi">24</span><span class="p">),</span> <span class="p">(</span><span class="s">"dog kennels"</span><span class="p">,</span> <span class="mi">42</span><span class="p">),</span> <span class="p">(</span><span class="s">"machine"</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span> <span class="p">(</span><span class="s">"cheeses"</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+
+<span class="n">weight</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">cargo_name</span><span class="p">,</span> <span class="n">cargo_weight</span> <span class="ow">in</span> <span class="n">manifest</span><span class="p">:</span>                               <span class="c1"># call both elements in the tuple
+</span>    <span class="c1"># current weight after the previous loop
+</span>    <span class="k">if</span> <span class="n">weight</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"  breaking from the loop now!"</span><span class="p">)</span>
+        <span class="k">break</span>                                                           <span class="c1"># stop the loop immediately.
+</span>    <span class="k">elif</span> <span class="n">weight</span> <span class="o">+</span> <span class="n">cargo_weight</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>                                   <span class="c1"># check in advance
+</span>        <span class="c1"># skipping this iteration of (cargo_name, cargo_weight)
+</span>        <span class="k">continue</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">items</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">cargo_name</span><span class="p">)</span>
+        <span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">+</span> <span class="n">cargo_weight</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"The final weight is {}, holding {} items."</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="n">items</span><span class="p">))</span>
+</code></pre></div>
+<p>Within loops, you may customize flows which allow the loops to <code>break</code> when a certain condition is met, or skip this iteration and <code>continue</code> with the next.</p>
+
+<p>This is useful for loops that iterate over an unknown number of variable (e.g. <code>while</code> loops).</p>
 
       </div>
       <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
-          </div>
       </div>
     </div>
   </body>
