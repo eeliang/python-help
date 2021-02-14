@@ -122,14 +122,57 @@ There are reserved words in python, which are pre-defined as built-in functions,
 
 Operators are based on _boolean_ values. It takes two value at any one instance and computes a `True/False` output.
 
-### (1/4) Logic/Comparison/Relational operators
+### (1/5) Logic operators
 
 ```
-True or False                   # this is True
-not False                       # this is True
+True and False          # False
+True or false           # True
+not False               # True
+```
 
-x == y                          #
-x != y                          # x > y                           # x < y
+These operators compares the relation between two values, in any one instance.
+
+In python, `and` / `or` operators are executed with a short-circuit "shortcut". This allows the machine to skip over block of code that are redundant. Also known as **Short circuit evaluation**.
+
+- `and`
+
+Evaluates x; if x is true, evaluate y. Else (`x=False`), return x.
+
+This means that if x is false, y is untouched. Python short-circuits the evaluation.
+
+- `or`
+
+Evaluates x; if x is true, returns x. If x is false, evaluate y.
+
+This means that if x is true, y is untouched. The same short-circuit happens.
+
+<aside class="notice">
+The short circuit logic allows us to write layered statements that contains multiple conditional statements
+</aside>
+
+```python
+# long method
+if x%2==1:
+    return "Odd"
+else:
+    return "Even"
+
+lambda x:x%2 and "Odd" or "Even"
+```
+
+**Example**
+
+- this line uses the truth value of an object, where non-empty variables are True (0=False,''=False).
+- if the condition (lambda x:x%2) is True, the second clause of `and` is return. Returns "Odd". As the first clause of the `or`is True. It short circuits and the first clause is returned. Returns "Odd"
+- if the condition (lambda x:x%2) is False, the `and` operator short circuits. (lambda x:x%2 and True) returns integer=0. As the first clause of the `or` is False, the second clause of `or` is evaluated. Returns "Even"
+
+### (2/5) Comparison/Relational operators
+
+```
+x == y
+x != y
+x > y
+x < y
 x >= y
 x <= y
 ```
@@ -140,7 +183,10 @@ When evaluating strings, remember that python evaluates iteratively based on the
 
 TODO: Concept of lazy evaluation. `and` vs `or` operator.
 
-### (2/4) Arithmetic operators
+
+
+
+### (3/5) Arithmetic operators
 
 ```
 addition        = 1 + 2
@@ -159,7 +205,7 @@ Python performs the `modulus` operation different from other programming languag
 Arithmetic operators works for strings, list, and  tuples, but behave differently.
 
 
-### (3/4) Identity operators
+### (4/5) Identity operators
 
 ```
 a = [1, 2, 3]
@@ -177,7 +223,7 @@ This is also based on _boolean_ values. These operators describe the relation be
 
 The `is` operators answer the question: "if the two comparisions share the same **memory space**". For most immutable variables, `is` equates to `==`. But, not for list, as this is a mutable data containter. Two lists can currently hold the same information, but have different memory locations.
 
-### (4/4) Bitwise operators
+### (5/5) Bitwise operators
 
 ```
 a = 10 = 1010

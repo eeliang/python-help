@@ -109,7 +109,8 @@ It is common to format strings for output. This is used in logging scenarios or 
 
 One way to format string dynamically with variables is to use **String interpolation**. Using this, you can substitute variables in the string outputs to create dynamic content. From python 3.8<, it is recommended to use [f-strings](https://docs.python.org/3/reference/lexical_analysis.html#f-strings).
 
-With f-strings, you can perform conversion [!] and formatting [:]. The conversion specifier is mostly used to cast non-string values into stringdatatypes (`!s` or `!r`).
+With f-strings, you can perform conversion [!] and formatting [:]. The conversion specifier is mostly used to cast non-string values into stringdatatypes (`!s` or `!r`). Learn more about the difference between `repr` and `str` [here](https://dbader.org/blog/python-repr-vs-str
+).
 
 Other dated methods for string interpolation are available in python. You can use the [**% method**](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting) most practiced in the C language.
 

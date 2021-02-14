@@ -15,8 +15,9 @@ includes:
   - concept-guide
   - datatypes
   - environments
-  - list-comprehension
   - control-flow
+  - list-comprehension
+  - object-oriented-programming
 
 search: true
 

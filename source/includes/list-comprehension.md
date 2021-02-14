@@ -69,6 +69,29 @@ List comprehension provides a concise way of creating lists. In the long form, l
 
 This has the advantage of requiring less memory capacity. When using the **long method**, a variable named `x` will still exist outside of the loop. But with the **lambda_method** , the `lambda x:` does not persist outside of the code block.
 
-<aside class="success">
-    See here for more information on [generators](/iterators-and-generators/iterators-and-generators.md).
-</aside>
+## Iterators and Generators
+
+```
+# Iterator
+range(10)           # a stream of elements
+pet.keys()
+
+# Generator
+def squares(start, stop):
+    for i in range(start, stop):
+        yield i * i
+
+generator = squares(a, b)
+
+generator = (i*i for i in range(a, b))
+```
+
+Strings and lists are objects that are iterable - meaning that they can return one element at a time. But iterators are unique because it is an object that represents a stream of data.
+
+Streams are useful because they represent large amounts of data, but because they are not processed into memory immediately, they occupy minimal memory or computing demands.
+
+Successive elements from the iterator can be called using the `.next()` method. Using a list comprehension or `for..in..` syntax automatically executes this method.
+
+Generators are a special subset of iterators that outputs custom values produced from a function. Every time the generator is called, the function stack is activated.
+
+
