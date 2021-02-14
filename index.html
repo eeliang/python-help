@@ -371,6 +371,17 @@
               </ul>
           </li>
           <li>
+            <a href="#control-flow" class="toc-h1 toc-link" data-title="Control flow">Control flow</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#conditional-statements" class="toc-h2 toc-link" data-title="Conditional statements">Conditional statements</a>
+                  </li>
+                  <li>
+                    <a href="#loops" class="toc-h2 toc-link" data-title="Loops">Loops</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#working-with-python-list" class="toc-h1 toc-link" data-title="Working with python list">Working with python list</a>
               <ul class="toc-list-h2">
                   <li>
@@ -385,16 +396,22 @@
                   <li>
                     <a href="#list-comprehension" class="toc-h2 toc-link" data-title="List comprehension">List comprehension</a>
                   </li>
+                  <li>
+                    <a href="#iterators-and-generators" class="toc-h2 toc-link" data-title="Iterators and Generators">Iterators and Generators</a>
+                  </li>
               </ul>
           </li>
           <li>
-            <a href="#control-flow" class="toc-h1 toc-link" data-title="Control flow">Control flow</a>
+            <a href="#classes-and-object" class="toc-h1 toc-link" data-title="Classes and object">Classes and object</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#conditional-statements" class="toc-h2 toc-link" data-title="Conditional statements">Conditional statements</a>
+                    <a href="#precusor-namedtuple" class="toc-h2 toc-link" data-title="Precusor: namedtuple">Precusor: namedtuple</a>
                   </li>
                   <li>
-                    <a href="#loops" class="toc-h2 toc-link" data-title="Loops">Loops</a>
+                    <a href="#data-classes" class="toc-h2 toc-link" data-title="Data classes">Data classes</a>
+                  </li>
+                  <li>
+                    <a href="#class" class="toc-h2 toc-link" data-title="Class">Class</a>
                   </li>
               </ul>
           </li>
@@ -524,11 +541,52 @@ yield, raise
 <p>There are reserved words in python, which are pre-defined as built-in functions, type Conversion, and other control flow tools. These cannot be used as variable names.</p>
 <h2 id='operators'>Operators</h2>
 <p>Operators are based on <em>boolean</em> values. It takes two value at any one instance and computes a <code>True/False</code> output.</p>
-<h3 id='1-4-logic-comparison-relational-operators'>(1/4) Logic/Comparison/Relational operators</h3><div class="highlight"><pre class="highlight plaintext"><code>True or False                   # this is True
-not False                       # this is True
+<h3 id='1-5-logic-operators'>(1/5) Logic operators</h3><div class="highlight"><pre class="highlight plaintext"><code>True and False          # False
+True or false           # True
+not False               # True
+</code></pre></div>
+<p>These operators compares the relation between two values, in any one instance.</p>
 
-x == y                          #
-x != y                          # x &gt; y                           # x &lt; y
+<p>In python, <code>and</code> / <code>or</code> operators are executed with a short-circuit &quot;shortcut&quot;. This allows the machine to skip over block of code that are redundant. Also known as <strong>Short circuit evaluation</strong>.</p>
+
+<ul>
+<li><code>and</code></li>
+</ul>
+
+<p>Evaluates x; if x is true, evaluate y. Else (<code>x=False</code>), return x.</p>
+
+<p>This means that if x is false, y is untouched. Python short-circuits the evaluation.</p>
+
+<ul>
+<li><code>or</code></li>
+</ul>
+
+<p>Evaluates x; if x is true, returns x. If x is false, evaluate y.</p>
+
+<p>This means that if x is true, y is untouched. The same short-circuit happens.</p>
+
+<aside class="notice">
+The short circuit logic allows us to write layered statements that contains multiple conditional statements
+</aside>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># long method
+</span><span class="k">if</span> <span class="n">x</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s">"Odd"</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s">"Even"</span>
+
+<span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">%</span><span class="mi">2</span> <span class="ow">and</span> <span class="s">"Odd"</span> <span class="ow">or</span> <span class="s">"Even"</span>
+</code></pre></div>
+<p><strong>Example</strong></p>
+
+<ul>
+<li>this line uses the truth value of an object, where non-empty variables are True (0=False,&#39;&#39;=False).</li>
+<li>if the condition (lambda x:x%2) is True, the second clause of <code>and</code> is return. Returns &quot;Odd&quot;. As the first clause of the <code>or</code>is True. It short circuits and the first clause is returned. Returns &quot;Odd&quot;</li>
+<li>if the condition (lambda x:x%2) is False, the <code>and</code> operator short circuits. (lambda x:x%2 and True) returns integer=0. As the first clause of the <code>or</code> is False, the second clause of <code>or</code> is evaluated. Returns &quot;Even&quot;</li>
+</ul>
+<h3 id='2-5-comparison-relational-operators'>(2/5) Comparison/Relational operators</h3><div class="highlight"><pre class="highlight plaintext"><code>x == y
+x != y
+x &gt; y
+x &lt; y
 x &gt;= y
 x &lt;= y
 </code></pre></div>
@@ -537,7 +595,7 @@ x &lt;= y
 <p>When evaluating strings, remember that python evaluates iteratively based on the character set, starting at the first index. Also, note that comparisons are case sensitive - capital letters have a smaller ASCII value than lowercase letters.</p>
 
 <p>TODO: Concept of lazy evaluation. <code>and</code> vs <code>or</code> operator.</p>
-<h3 id='2-4-arithmetic-operators'>(2/4) Arithmetic operators</h3><div class="highlight"><pre class="highlight plaintext"><code>addition        = 1 + 2
+<h3 id='3-5-arithmetic-operators'>(3/5) Arithmetic operators</h3><div class="highlight"><pre class="highlight plaintext"><code>addition        = 1 + 2
 subtraction     = 15 - 2
 multiplication  = 15 * 2
 exponential     = 15 ** 2
@@ -550,7 +608,7 @@ modulus         = 15 % 2        # remainder
 <p>Python performs the <code>modulus</code> operation different from other programming languages. See this image on the comparison between programming languages for modulus operation on negative numbers <a href="https://drive.google.com/file/d/1DhX5IWIKdhjtxqbWr4WQ68LRv_rgWenl/view?usp=sharing">here</a>.</p>
 
 <p>Arithmetic operators works for strings, list, and  tuples, but behave differently.</p>
-<h3 id='3-4-identity-operators'>(3/4) Identity operators</h3><div class="highlight"><pre class="highlight plaintext"><code>a = [1, 2, 3]
+<h3 id='4-5-identity-operators'>(4/5) Identity operators</h3><div class="highlight"><pre class="highlight plaintext"><code>a = [1, 2, 3]
 b = a
 c = [1, 2, 3]
 
@@ -563,7 +621,7 @@ print(1 in a)                   # this is true
 <p>This is also based on <em>boolean</em> values. These operators describe the relation between two values, in any one instance. It either returns True or False according to the condition. You can compare across data types; including membership information (list, tuple, dictionary, set).</p>
 
 <p>The <code>is</code> operators answer the question: &quot;if the two comparisions share the same <strong>memory space</strong>&quot;. For most immutable variables, <code>is</code> equates to <code>==</code>. But, not for list, as this is a mutable data containter. Two lists can currently hold the same information, but have different memory locations.</p>
-<h3 id='4-4-bitwise-operators'>(4/4) Bitwise operators</h3><div class="highlight"><pre class="highlight plaintext"><code>a = 10 = 1010
+<h3 id='5-5-bitwise-operators'>(5/5) Bitwise operators</h3><div class="highlight"><pre class="highlight plaintext"><code>a = 10 = 1010
 b = 6  = 0110
 
 print(a &amp; b)                    # 2  = 0010. Spots overlaps.
@@ -685,7 +743,7 @@ f"{name} is reading the book {book['chapter']!r} on page {book['page']:03d}"
 
 <p>One way to format string dynamically with variables is to use <strong>String interpolation</strong>. Using this, you can substitute variables in the string outputs to create dynamic content. From python 3.8&lt;, it is recommended to use <a href="https://docs.python.org/3/reference/lexical_analysis.html#f-strings">f-strings</a>.</p>
 
-<p>With f-strings, you can perform conversion [!] and formatting [:]. The conversion specifier is mostly used to cast non-string values into stringdatatypes (<code>!s</code> or <code>!r</code>).</p>
+<p>With f-strings, you can perform conversion [!] and formatting [:]. The conversion specifier is mostly used to cast non-string values into stringdatatypes (<code>!s</code> or <code>!r</code>). Learn more about the difference between <code>repr</code> and <code>str</code> <a href="https://dbader.org/blog/python-repr-vs-str">here</a>.</p>
 
 <p>Other dated methods for string interpolation are available in python. You can use the <a href="https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting"><strong>% method</strong></a> most practiced in the C language.</p>
 
@@ -886,52 +944,6 @@ whence python               # User/&lt;username&gt;/.pyenv/shims/python
 <ul>
 <li>Add a symlink to your $PYENV_ROOT/versions/<current version>/bin</li>
 </ul>
-<h1 id='working-with-python-list'>Working with python list</h1><div class="highlight"><pre class="highlight plaintext"><code># Bad practice.
-
-count = []
-price_list = [1,2,3,4,5]
-
-for i in price_list:
-    count = count + i
-</code></pre></div>
-<p>Python lists are wonderful. They perform <code>.pop</code>, <code>.append</code> at O(1) time, as well as index operations at O(1) - combining the best of the Array and Linked List data structures.</p>
-
-<p>However, python is horrendously slow at performing custom operations to create, edit, or filter lists. Thus, it is recommended to use either a built-in function or to use list comprehensions.</p>
-<h2 id='zip'><code>zip()</code></h2><div class="highlight"><pre class="highlight plaintext"><code>x, y = [1, 2, 3], ["a", "b", "c"]
-zipped = zip(x, y)
-print(list(zipped))                     # [(1, "a"), (2, "b"), (3, "c")]
-x2, y2 = zip(*zipped)
-print(x == list(x2) and y == list(y2))  # True
-</code></pre></div>
-<p>You can create ordered data by <em>stitching</em>  matching pairs from different data containers.</p>
-
-<p>Use <code>zip()</code> to pull together <em>n</em> list into a list of tuples. <code>zip()</code> also works to un-zipped a <em>n</em> dimension list.</p>
-<h2 id='enumerate'><code>enumerate()</code></h2><div class="highlight"><pre class="highlight plaintext"><code>seasons = ['Spring', 'Summer', 'Fall', 'Winter']
-print(list(enumerate(seasons)))                     # [(0, 'Spring'), (1, 'Summer'), (2, 'Fall'), (3, 'Winter')]
-</code></pre></div>
-<p>Use <code>enumerate()</code> to create ordered data containers by attaching the index as a <strong>index</strong>:<strong>value</strong> pair.</p>
-<h2 id='map'><code>map()</code></h2><div class="highlight"><pre class="highlight plaintext"><code>map(lamda x: print(x), range(10))
-</code></pre></div>
-<p>This is the equivalent of <code>.each</code> in Javascript or <code>.foreach</code> in Ruby. This is a top-level function.</p>
-
-<p>Supply a function variable and <em>n</em> iterables to apply the function on.</p>
-<h2 id='list-comprehension'>List comprehension</h2><div class="highlight"><pre class="highlight plaintext"><code>long_method = []
-for x in range(0, 9, 2):
-    long_method.append(x**2)                                            # [0, 4, 16, 36, 64]
-print(x)                                                                # x persist outside. Bad practice
-
-lamba_method = list(map(lambda x: x**2, range(0, 9, 2)))
-
-short_method = [x ** 2 for x in range(0, 9, 2)]                         # list
-generators = (x ** 2 for x in range(0, 9, 2))                           # generator
-</code></pre></div>
-<p>List comprehension provides a concise way of creating lists. In the long form, list comprehension is taking a block of logic (<em>function</em> + <em>loop</em>) and appying it to an iterable.</p>
-
-<p>This has the advantage of requiring less memory capacity. When using the <strong>long method</strong>, a variable named <code>x</code> will still exist outside of the loop. But with the <strong>lambda_method</strong> , the <code>lambda x:</code> does not persist outside of the code block.</p>
-
-<aside class="success">
-    See here for more information on [generators](/iterators-and-generators/iterators-and-generators.md).
-</aside>
 <h1 id='control-flow'>Control flow</h1>
 <p>Consider your code as a map. The machine is like a laser sharp <em>pointer</em> focused o a single line of your script (the backend). Each line has a corresponding output and each action (<code>input()</code>) has a corresponding reaction. Control flow directs where the <em>pointer</em> moves.</p>
 <h2 id='conditional-statements'>Conditional statements</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">propert_price</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"What is the price of your property: "</span><span class="p">))</span>
@@ -1001,7 +1013,154 @@ Return is only used for function calls. Ensure that your code is within a functi
 <p>Within loops, you may customize flows which allow the loops to <code>break</code> when a certain condition is met, or skip this iteration and <code>continue</code> with the next.</p>
 
 <p>This is useful for loops that iterate over an unknown number of variable (e.g. <code>while</code> loops).</p>
+<h1 id='working-with-python-list'>Working with python list</h1><div class="highlight"><pre class="highlight plaintext"><code># Bad practice.
 
+count = []
+price_list = [1,2,3,4,5]
+
+for i in price_list:
+    count = count + i
+</code></pre></div>
+<p>Python lists are wonderful. They perform <code>.pop</code>, <code>.append</code> at O(1) time, as well as index operations at O(1) - combining the best of the Array and Linked List data structures.</p>
+
+<p>However, python is horrendously slow at performing custom operations to create, edit, or filter lists. Thus, it is recommended to use either a built-in function or to use list comprehensions.</p>
+<h2 id='zip'><code>zip()</code></h2><div class="highlight"><pre class="highlight plaintext"><code>x, y = [1, 2, 3], ["a", "b", "c"]
+zipped = zip(x, y)
+print(list(zipped))                     # [(1, "a"), (2, "b"), (3, "c")]
+x2, y2 = zip(*zipped)
+print(x == list(x2) and y == list(y2))  # True
+</code></pre></div>
+<p>You can create ordered data by <em>stitching</em>  matching pairs from different data containers.</p>
+
+<p>Use <code>zip()</code> to pull together <em>n</em> list into a list of tuples. <code>zip()</code> also works to un-zipped a <em>n</em> dimension list.</p>
+<h2 id='enumerate'><code>enumerate()</code></h2><div class="highlight"><pre class="highlight plaintext"><code>seasons = ['Spring', 'Summer', 'Fall', 'Winter']
+print(list(enumerate(seasons)))                     # [(0, 'Spring'), (1, 'Summer'), (2, 'Fall'), (3, 'Winter')]
+</code></pre></div>
+<p>Use <code>enumerate()</code> to create ordered data containers by attaching the index as a <strong>index</strong>:<strong>value</strong> pair.</p>
+<h2 id='map'><code>map()</code></h2><div class="highlight"><pre class="highlight plaintext"><code>map(lamda x: print(x), range(10))
+</code></pre></div>
+<p>This is the equivalent of <code>.each</code> in Javascript or <code>.foreach</code> in Ruby. This is a top-level function.</p>
+
+<p>Supply a function variable and <em>n</em> iterables to apply the function on.</p>
+<h2 id='list-comprehension'>List comprehension</h2><div class="highlight"><pre class="highlight plaintext"><code>long_method = []
+for x in range(0, 9, 2):
+    long_method.append(x**2)                                            # [0, 4, 16, 36, 64]
+print(x)                                                                # x persist outside. Bad practice
+
+lamba_method = list(map(lambda x: x**2, range(0, 9, 2)))
+
+short_method = [x ** 2 for x in range(0, 9, 2)]                         # list
+generators = (x ** 2 for x in range(0, 9, 2))                           # generator
+</code></pre></div>
+<p>List comprehension provides a concise way of creating lists. In the long form, list comprehension is taking a block of logic (<em>function</em> + <em>loop</em>) and appying it to an iterable.</p>
+
+<p>This has the advantage of requiring less memory capacity. When using the <strong>long method</strong>, a variable named <code>x</code> will still exist outside of the loop. But with the <strong>lambda_method</strong> , the <code>lambda x:</code> does not persist outside of the code block.</p>
+<h2 id='iterators-and-generators'>Iterators and Generators</h2><div class="highlight"><pre class="highlight plaintext"><code># Iterator
+range(10)           # a stream of elements
+pet.keys()
+
+# Generator
+def squares(start, stop):
+    for i in range(start, stop):
+        yield i * i
+
+generator = squares(a, b)
+
+generator = (i*i for i in range(a, b))
+</code></pre></div>
+<p>Strings and lists are objects that are iterable - meaning that they can return one element at a time. But iterators are unique because it is an object that represents a stream of data.</p>
+
+<p>Streams are useful because they represent large amounts of data, but because they are not processed into memory immediately, they occupy minimal memory or computing demands.</p>
+
+<p>Successive elements from the iterator can be called using the <code>.next()</code> method. Using a list comprehension or <code>for..in..</code> syntax automatically executes this method.</p>
+
+<p>Generators are a special subset of iterators that outputs custom values produced from a function. Every time the generator is called, the function stack is activated.</p>
+<h1 id='classes-and-object'>Classes and object</h1><h2 id='precusor-namedtuple'>Precusor: namedtuple</h2><div class="highlight"><pre class="highlight plaintext"><code>from collections import namedtuple
+
+Car = namedtuple('car', ['color','brand'])              # takes 2 arguments. Name and fields
+print(Car._fields)                                      # ('color', 'brand')
+
+myfirstcar = Car("red", "mini")
+print(myfirstcar)                                       # car(color='red', brand='mini')
+print(my_car.color)                                     # red, accessible by name
+print(my_car[1])                                        # mini, index calls works as well.
+print(*my_car)                                          # red mini
+</code></pre></div>
+<p>A &quot;class&quot; that churns out immutable tuples of fixed length. It is pre-built with <code>__repr__</code> and the instance elements are accessible by index calls of field names.</p>
+
+<p>You can extend the benefits of namedTuples with inheritance.</p>
+
+<p>Quote: &quot;namedtuples are a memory-efficient shortcut to defining an immutable class in Python manually&quot;.</p>
+<h2 id='data-classes'>Data classes</h2><div class="highlight"><pre class="highlight plaintext"><code>from dataclasses import fields          # note plural
+
+Position = make_dataclass('Position', ['name', 'lat', 'lon'])   # single line syntax
+
+Position.fields()                                       # (Field(name='name',type='typing.Any',repr=True...)
+
+from dataclasses import make_dataclass
+
+@dataclass                                              # the @dataclass decorator makes type hints mandatory
+class Position:
+    name: str
+    lon: float = 0.0
+    lat: float = field(default=0.0, repr=False)
+
+
+home = Position("home")                                 # Position(name='home', lon=0.0, lat=0.0)
+</code></pre></div>
+<p><a href="https://docs.python.org/3/library/dataclasses.html#dataclasses.field">Built-in module</a> in the python standard library. It is a class decorator that pre-initializes with <code>__init__</code>, <code>__eq___</code> and <code>__repr__</code>/<code>__str__</code>.</p>
+<h2 id='class'>Class</h2><div class="highlight"><pre class="highlight plaintext"><code>from dataclasses import dataclass, fields
+
+RANKS = '2 3 4 5 6 7 8 9 10 J Q K A'.split()
+SUITS = '♣ ♢ ♡ ♠'.split()
+
+@dataclass(order=True)
+class PlayingCard:
+    # init=False, this field is generated in __post_inti__()
+    sort_index: int = field(init=False, repr=False)
+    rank: str
+    suit: str
+
+    def __post_init__(self):
+        self.sort_index = (RANKS.index(self.rank) * len(SUITS) + SUITS.index(self.suit))
+
+    def __str__(self):  # used in Deck.__repr__
+        return f'{self.suit}{self.rank}'
+</code></pre></div>
+<p>Create a class of <strong>PlayingCards</strong>, this class consists of 52 unique cards, with 13 ranks and 4 suits.</p>
+
+<p>The <code>dataclassses</code> module helps to create helpful <a href="#">dunder methods</a>. In this example, adding the <code>@dataclass</code> decorators allows comparison of cards. Generates <code>__lt__</code> , <code>__le__</code> , <code>__gt__</code> , <code>__ge__</code>.
+4 suits and 13 rau</p>
+
+<p>When specifying default types that are outside of the basic data types (<em>int</em>,<em>str</em>), you can use the <code>typing</code> module. Especially for mutable arguments, like list, use the <em>default_factory</em> parameter to define a default value.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>from dataclasses import dataclass, field
+from typing import List
+
+def make_french_deck():
+    return [PlayingCard(r, s) for s in SUITS for r in RANKS]
+
+@dataclass
+class Deck:
+    # NOT List[PlayingCard] = make_french_deck()
+    cards: List[PlayingCard] = field(default_factory=make_french_deck)
+
+    def __str__(self):
+        cards = ', '.join(f'{c!s}' for c in self.cards)                 # !s calls __str__ in PlayingCards
+        return f'{self.__class__.__name__}({cards})'
+
+
+Deck()
+# Deck(cards=[PlayingCard(rank='2', suit='♣'), PlayingCard(rank='3', suit='♣'), PlayingCard(rank='4', suit='♣') ...)
+
+print(Deck())
+# Deck(♣2, ♣3, ♣4, ♣5, ♣6, ♣7, ♣8 ...)
+
+from random import sample
+
+hand = Deck(sample(make_french_deck(),k=5))
+print(hand)                                     # Deck(♣Q, ♢K, ♣J, ♡2, ♢A)
+
+</code></pre></div>
       </div>
       <div class="dark-box">
       </div>

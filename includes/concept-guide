@@ -101,11 +101,52 @@ yield, raise
 <p>There are reserved words in python, which are pre-defined as built-in functions, type Conversion, and other control flow tools. These cannot be used as variable names.</p>
 <h2 id='operators'>Operators</h2>
 <p>Operators are based on <em>boolean</em> values. It takes two value at any one instance and computes a <code>True/False</code> output.</p>
-<h3 id='1-4-logic-comparison-relational-operators'>(1/4) Logic/Comparison/Relational operators</h3><div class="highlight"><pre class="highlight plaintext"><code>True or False                   # this is True
-not False                       # this is True
+<h3 id='1-5-logic-operators'>(1/5) Logic operators</h3><div class="highlight"><pre class="highlight plaintext"><code>True and False          # False
+True or false           # True
+not False               # True
+</code></pre></div>
+<p>These operators compares the relation between two values, in any one instance.</p>
 
-x == y                          #
-x != y                          # x &gt; y                           # x &lt; y
+<p>In python, <code>and</code> / <code>or</code> operators are executed with a short-circuit &quot;shortcut&quot;. This allows the machine to skip over block of code that are redundant. Also known as <strong>Short circuit evaluation</strong>.</p>
+
+<ul>
+<li><code>and</code></li>
+</ul>
+
+<p>Evaluates x; if x is true, evaluate y. Else (<code>x=False</code>), return x.</p>
+
+<p>This means that if x is false, y is untouched. Python short-circuits the evaluation.</p>
+
+<ul>
+<li><code>or</code></li>
+</ul>
+
+<p>Evaluates x; if x is true, returns x. If x is false, evaluate y.</p>
+
+<p>This means that if x is true, y is untouched. The same short-circuit happens.</p>
+
+<aside class="notice">
+The short circuit logic allows us to write layered statements that contains multiple conditional statements
+</aside>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># long method
+</span><span class="k">if</span> <span class="n">x</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s">"Odd"</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s">"Even"</span>
+
+<span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">%</span><span class="mi">2</span> <span class="ow">and</span> <span class="s">"Odd"</span> <span class="ow">or</span> <span class="s">"Even"</span>
+</code></pre></div>
+<p><strong>Example</strong></p>
+
+<ul>
+<li>this line uses the truth value of an object, where non-empty variables are True (0=False,&#39;&#39;=False).</li>
+<li>if the condition (lambda x:x%2) is True, the second clause of <code>and</code> is return. Returns &quot;Odd&quot;. As the first clause of the <code>or</code>is True. It short circuits and the first clause is returned. Returns &quot;Odd&quot;</li>
+<li>if the condition (lambda x:x%2) is False, the <code>and</code> operator short circuits. (lambda x:x%2 and True) returns integer=0. As the first clause of the <code>or</code> is False, the second clause of <code>or</code> is evaluated. Returns &quot;Even&quot;</li>
+</ul>
+<h3 id='2-5-comparison-relational-operators'>(2/5) Comparison/Relational operators</h3><div class="highlight"><pre class="highlight plaintext"><code>x == y
+x != y
+x &gt; y
+x &lt; y
 x &gt;= y
 x &lt;= y
 </code></pre></div>
@@ -114,7 +155,7 @@ x &lt;= y
 <p>When evaluating strings, remember that python evaluates iteratively based on the character set, starting at the first index. Also, note that comparisons are case sensitive - capital letters have a smaller ASCII value than lowercase letters.</p>
 
 <p>TODO: Concept of lazy evaluation. <code>and</code> vs <code>or</code> operator.</p>
-<h3 id='2-4-arithmetic-operators'>(2/4) Arithmetic operators</h3><div class="highlight"><pre class="highlight plaintext"><code>addition        = 1 + 2
+<h3 id='3-5-arithmetic-operators'>(3/5) Arithmetic operators</h3><div class="highlight"><pre class="highlight plaintext"><code>addition        = 1 + 2
 subtraction     = 15 - 2
 multiplication  = 15 * 2
 exponential     = 15 ** 2
@@ -127,7 +168,7 @@ modulus         = 15 % 2        # remainder
 <p>Python performs the <code>modulus</code> operation different from other programming languages. See this image on the comparison between programming languages for modulus operation on negative numbers <a href="https://drive.google.com/file/d/1DhX5IWIKdhjtxqbWr4WQ68LRv_rgWenl/view?usp=sharing">here</a>.</p>
 
 <p>Arithmetic operators works for strings, list, and  tuples, but behave differently.</p>
-<h3 id='3-4-identity-operators'>(3/4) Identity operators</h3><div class="highlight"><pre class="highlight plaintext"><code>a = [1, 2, 3]
+<h3 id='4-5-identity-operators'>(4/5) Identity operators</h3><div class="highlight"><pre class="highlight plaintext"><code>a = [1, 2, 3]
 b = a
 c = [1, 2, 3]
 
@@ -140,7 +181,7 @@ print(1 in a)                   # this is true
 <p>This is also based on <em>boolean</em> values. These operators describe the relation between two values, in any one instance. It either returns True or False according to the condition. You can compare across data types; including membership information (list, tuple, dictionary, set).</p>
 
 <p>The <code>is</code> operators answer the question: &quot;if the two comparisions share the same <strong>memory space</strong>&quot;. For most immutable variables, <code>is</code> equates to <code>==</code>. But, not for list, as this is a mutable data containter. Two lists can currently hold the same information, but have different memory locations.</p>
-<h3 id='4-4-bitwise-operators'>(4/4) Bitwise operators</h3><div class="highlight"><pre class="highlight plaintext"><code>a = 10 = 1010
+<h3 id='5-5-bitwise-operators'>(5/5) Bitwise operators</h3><div class="highlight"><pre class="highlight plaintext"><code>a = 10 = 1010
 b = 6  = 0110
 
 print(a &amp; b)                    # 2  = 0010. Spots overlaps.

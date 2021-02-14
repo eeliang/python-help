@@ -1,0 +1,86 @@
+<h1 id='classes-and-object'>Classes and object</h1><h2 id='precusor-namedtuple'>Precusor: namedtuple</h2><div class="highlight"><pre class="highlight plaintext"><code>from collections import namedtuple
+
+Car = namedtuple('car', ['color','brand'])              # takes 2 arguments. Name and fields
+print(Car._fields)                                      # ('color', 'brand')
+
+myfirstcar = Car("red", "mini")
+print(myfirstcar)                                       # car(color='red', brand='mini')
+print(my_car.color)                                     # red, accessible by name
+print(my_car[1])                                        # mini, index calls works as well.
+print(*my_car)                                          # red mini
+</code></pre></div>
+<p>A &quot;class&quot; that churns out immutable tuples of fixed length. It is pre-built with <code>__repr__</code> and the instance elements are accessible by index calls of field names.</p>
+
+<p>You can extend the benefits of namedTuples with inheritance.</p>
+
+<p>Quote: &quot;namedtuples are a memory-efficient shortcut to defining an immutable class in Python manually&quot;.</p>
+<h2 id='data-classes'>Data classes</h2><div class="highlight"><pre class="highlight plaintext"><code>from dataclasses import fields          # note plural
+
+Position = make_dataclass('Position', ['name', 'lat', 'lon'])   # single line syntax
+
+Position.fields()                                       # (Field(name='name',type='typing.Any',repr=True...)
+
+from dataclasses import make_dataclass
+
+@dataclass                                              # the @dataclass decorator makes type hints mandatory
+class Position:
+    name: str
+    lon: float = 0.0
+    lat: float = field(default=0.0, repr=False)
+
+
+home = Position("home")                                 # Position(name='home', lon=0.0, lat=0.0)
+</code></pre></div>
+<p><a href="https://docs.python.org/3/library/dataclasses.html#dataclasses.field">Built-in module</a> in the python standard library. It is a class decorator that pre-initializes with <code>__init__</code>, <code>__eq___</code> and <code>__repr__</code>/<code>__str__</code>.</p>
+<h2 id='class'>Class</h2><div class="highlight"><pre class="highlight plaintext"><code>from dataclasses import dataclass, fields
+
+RANKS = '2 3 4 5 6 7 8 9 10 J Q K A'.split()
+SUITS = '♣ ♢ ♡ ♠'.split()
+
+@dataclass(order=True)
+class PlayingCard:
+    # init=False, this field is generated in __post_inti__()
+    sort_index: int = field(init=False, repr=False)
+    rank: str
+    suit: str
+
+    def __post_init__(self):
+        self.sort_index = (RANKS.index(self.rank) * len(SUITS) + SUITS.index(self.suit))
+
+    def __str__(self):  # used in Deck.__repr__
+        return f'{self.suit}{self.rank}'
+</code></pre></div>
+<p>Create a class of <strong>PlayingCards</strong>, this class consists of 52 unique cards, with 13 ranks and 4 suits.</p>
+
+<p>The <code>dataclassses</code> module helps to create helpful <a href="#">dunder methods</a>. In this example, adding the <code>@dataclass</code> decorators allows comparison of cards. Generates <code>__lt__</code> , <code>__le__</code> , <code>__gt__</code> , <code>__ge__</code>.
+4 suits and 13 rau</p>
+
+<p>When specifying default types that are outside of the basic data types (<em>int</em>,<em>str</em>), you can use the <code>typing</code> module. Especially for mutable arguments, like list, use the <em>default_factory</em> parameter to define a default value.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>from dataclasses import dataclass, field
+from typing import List
+
+def make_french_deck():
+    return [PlayingCard(r, s) for s in SUITS for r in RANKS]
+
+@dataclass
+class Deck:
+    # NOT List[PlayingCard] = make_french_deck()
+    cards: List[PlayingCard] = field(default_factory=make_french_deck)
+
+    def __str__(self):
+        cards = ', '.join(f'{c!s}' for c in self.cards)                 # !s calls __str__ in PlayingCards
+        return f'{self.__class__.__name__}({cards})'
+
+
+Deck()
+# Deck(cards=[PlayingCard(rank='2', suit='♣'), PlayingCard(rank='3', suit='♣'), PlayingCard(rank='4', suit='♣') ...)
+
+print(Deck())
+# Deck(♣2, ♣3, ♣4, ♣5, ♣6, ♣7, ♣8 ...)
+
+from random import sample
+
+hand = Deck(sample(make_french_deck(),k=5))
+print(hand)                                     # Deck(♣Q, ♢K, ♣J, ♡2, ♢A)
+
+</code></pre></div>

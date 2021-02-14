@@ -109,7 +109,7 @@ f"{name} is reading the book {book['chapter']!r} on page {book['page']:03d}"
 
 <p>One way to format string dynamically with variables is to use <strong>String interpolation</strong>. Using this, you can substitute variables in the string outputs to create dynamic content. From python 3.8&lt;, it is recommended to use <a href="https://docs.python.org/3/reference/lexical_analysis.html#f-strings">f-strings</a>.</p>
 
-<p>With f-strings, you can perform conversion [!] and formatting [:]. The conversion specifier is mostly used to cast non-string values into stringdatatypes (<code>!s</code> or <code>!r</code>).</p>
+<p>With f-strings, you can perform conversion [!] and formatting [:]. The conversion specifier is mostly used to cast non-string values into stringdatatypes (<code>!s</code> or <code>!r</code>). Learn more about the difference between <code>repr</code> and <code>str</code> <a href="https://dbader.org/blog/python-repr-vs-str">here</a>.</p>
 
 <p>Other dated methods for string interpolation are available in python. You can use the <a href="https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting"><strong>% method</strong></a> most practiced in the C language.</p>
 
