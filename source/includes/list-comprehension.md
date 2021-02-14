@@ -57,13 +57,17 @@ Supply a function variable and _n_ iterables to apply the function on.
 long_method = []
 for x in range(0, 9, 2):
     long_method.append(x**2)                                            # [0, 4, 16, 36, 64]
+print(x)                                                                # x persist outside. Bad practice
 
 lamba_method = list(map(lambda x: x**2, range(0, 9, 2)))
+
 short_method = [x ** 2 for x in range(0, 9, 2)]                         # list
 generators = (x ** 2 for x in range(0, 9, 2))                           # generator
 ```
 
-List comprehension provides a concise way of creating lists. For more information, see [here](/python/basics/data-types-and-operators/data-container-methods.md#list-methods).
+List comprehension provides a concise way of creating lists. In the long form, list comprehension is taking a block of logic (_function_ + _loop_) and appying it to an iterable.
+
+This has the advantage of requiring less memory capacity. When using the **long method**, a variable named `x` will still exist outside of the loop. But with the **lambda_method** , the `lambda x:` does not persist outside of the code block.
 
 <aside class="success">
     See here for more information on [generators](/iterators-and-generators/iterators-and-generators.md).
